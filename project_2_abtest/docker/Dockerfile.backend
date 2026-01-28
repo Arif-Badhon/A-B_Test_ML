@@ -6,12 +6,24 @@ RUN apt-get update && apt-get install -y \
     gcc postgresql-client libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Install uv
-RUN pip install uv
+# Install uv with increased timeout
+RUN pip install --default-timeout=1000 uv
 
 # Copy only pyproject.toml first for better caching
 COPY backend/pyproject.toml .
-RUN uv pip install --system .
+
+# Install dependencies using uv (no timeout needed - uv handles retries)
+RUN uv pip install --system \
+    "fastapi>=0.104.0" \
+    "uvicorn[standard]>=0.24.0" \
+    "sqlalchemy>=2.0.23" \
+    "psycopg2-binary>=2.9.9" \
+    "pydantic>=2.4.2" \
+    "pydantic-settings>=2.0.0" \
+    "numpy>=1.24.3" \
+    "scipy>=1.11.4" \
+    "matplotlib>=3.8.2" \
+    "python-dotenv>=1.0.0"
 
 # Copy the rest of the backend
 COPY backend/ .
