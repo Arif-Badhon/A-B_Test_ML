@@ -1,5 +1,5 @@
 import pytest
-from ..services.power import PowerAnalyzer
+from services.power import PowerAnalyzer
 
 def test_sample_size_calculation():
     n = PowerAnalyzer.sample_size(effect_size=0.5, alpha=0.05, power=0.8)

@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .database import engine, Base
-from .routes import experiments, results, power_analysis
-from .config import settings
+import database
+import models
+import routes.experiments as experiments_route
+import routes.results as results_route
+import routes.power_analysis as power_route
+from config import settings
 
 # Create database tables
-Base.metadata.create_all(bind=engine)
+database.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -26,9 +29,9 @@ def health_check():
     return {"status": "healthy"}
 
 # Include routers
-app.include_router(experiments.router, prefix=settings.API_V1_STR)
-app.include_router(results.router, prefix=settings.API_V1_STR)
-app.include_router(power_analysis.router, prefix=settings.API_V1_STR)
+app.include_router(experiments_route.router, prefix=settings.API_V1_STR)
+app.include_router(results_route.router, prefix=settings.API_V1_STR)
+app.include_router(power_route.router, prefix=settings.API_V1_STR)
 
 if __name__ == "__main__":
     import uvicorn

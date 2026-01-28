@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from ..services.statistics import welch_ttest, cohens_d, calculate_ci, mannwhitneyu_test, chisquare_test, summary_statistics
+from services.statistics import welch_ttest, cohens_d, calculate_ci, mannwhitneyu_test, chisquare_test, summary_statistics
 
 def test_welch_ttest_significant():
     control = [1.0, 1.2, 1.1, 1.3, 1.0] * 10

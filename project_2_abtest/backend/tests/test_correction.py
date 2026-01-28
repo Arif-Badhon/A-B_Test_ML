@@ -1,5 +1,5 @@
 import pytest
-from ..services.correction import MultipleTestingCorrection
+from services.correction import MultipleTestingCorrection
 
 def test_bonferroni():
     p_values = [0.01, 0.04, 0.1]

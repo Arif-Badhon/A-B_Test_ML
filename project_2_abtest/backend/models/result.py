@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey, func
-from ..database import Base
+from database import Base
 
 class Result(Base):
     __tablename__ = "results"

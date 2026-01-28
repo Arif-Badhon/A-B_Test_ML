@@ -12,7 +12,7 @@ docker-compose up --build
 ```
 
 -   **Frontend**: [http://localhost:8501](http://localhost:8501)
--   **API Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
+-   **API Documentation**: [http://localhost:8001/docs](http://localhost:8001/docs)
 
 ## 🛠 Tech Stack
 

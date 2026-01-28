@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from typing import List, Dict
-from ..services.power import PowerAnalyzer
+from services.power import PowerAnalyzer
 
 router = APIRouter(prefix="/power", tags=["power"])
 
