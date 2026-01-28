@@ -1,0 +1,15 @@
+[project]
+name = "abtest-frontend"
+version = "1.0.0"
+description = "A/B Testing Framework Frontend"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.28.1",
+    "requests>=2.31.0",
+    "numpy>=1.24.3",
+    "pandas>=2.1.3",
+    "plotly>=5.17.0",
+    "scipy>=1.11.4",
+    "matplotlib>=3.8.2",
+    "python-dotenv>=1.0.0",
+]

@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install uv
+RUN pip install uv
+
+# Copy only pyproject.toml first for better caching
+COPY frontend/pyproject.toml .
+RUN uv pip install --system .
+
+# Copy the rest of the frontend
+COPY frontend/ .
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
